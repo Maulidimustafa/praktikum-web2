@@ -12,7 +12,7 @@ if ($_SESSION['username'] == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <base href="praktikum2020"> -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <title>Praktikum 2023</title>
+    <title>SIG</title>
     <style>
     body {
         margin-bottom: 6em;
@@ -40,7 +40,7 @@ if ($_SESSION['username'] == '') {
 <body>
     <div class="container-fluid">
 
-        <h3 class="mt-4 mb-4">Aplikasi Data Mahasiswa</h3>
+        <h3 class="mt-4 mb-4">Aplikasi Data Damkar</h3>
 
         <div class="row">
             <div class="col-md-3 col-sm-12 mb-4">
@@ -86,6 +86,11 @@ if ($_SESSION['username'] == '') {
                         case "mahasiswa-update";
 
                             include "../mahasiswa/mahasiswa_update.php";
+
+                            break;
+                        case "show2-update";
+
+                            include "../mahasiswa/show2.php";
 
                             break;
                             // matakuliah

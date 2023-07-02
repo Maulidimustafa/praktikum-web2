@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <div class="card">
 <div class="card-header">
@@ -7,23 +7,64 @@ session_start();
 </div>
 <div class="card-body">
     <p>Selamat Datang <strong><i><?php echo$_SESSION['username']?></i></strong>,</p>
-<p>
-    <strong>Materi ini mempelajari CRUD basic dengan <code>PHP + MYSQLi</code> </strong><br><br>
-    Apa saja yang kita pelajari ?
-    <ul>
-        <li>Membuat tampilan menggunakan Bootstrap 4</li>
-        <li>Pemroraman dasar <code>PHP</code></li>
-        <li>Proses CRUD <code>create, read, update, delete</code></li>
-        <li>Halaman dinamis dengan <code>Methode GET</code></li>
-        <li>Login User dengan password <code>HASH</code></li>
-        <li>Register User</li>
-        <li>Fungsi simpan data</li>
-        <li>Fungsi edit data </li>
-        <li>Fungsi hapus data</li>
-        <li>Fungsi cari data</li>
-        <li>Fungsi pagination</li>
-        <li>Fungsi cetak data dengan <code>FPDF</code></li>
-    </ul>
-</p>
+<html>
+	<head>
+		<title> WebGIS GeoJSON </title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+
+	<style type="text/css">
+	#map { height: 500px; }</style>
+	</head>
+
+	<body>
+	<div id="map"></div>
+
+	<center><h1><marquee behavior="alternate"> WebGIS Damkar Banjarmasin </marquee></h1></center>
+	</body>
+
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	<script src="../assets/js/leaflet.ajax.js"> </script>
+
+	<script type="text/javascript">
+
+	var map = L.map('map').setView([-3.318775, 114.594497], 10);
+
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 15,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	// L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}?access_token={accessToken}', {
+	// maxZoom: 15,
+	// id: 'mapbox.streets',
+	// accessToken: 'pk.eyJ1IjoiZmF1eml5dXNhcmFobWFuIiwiYSI6ImNsZmpiOXBqYTJnbzUzcnBnNnJzMjB0ZHMifQ.AldZlBJVQaCALzRw-vhWiQ'
+	// }).addTo(map);
+
+	function popUp(f,l){
+		var out = [];
+		if (f.properties){
+			for(key in f.properties){
+				out.push(key+": "+f.properties[key]);
+			}
+		l.bindPopup(out.join("<br />"));
+		}
+	}
+
+	var jsonTest = new L.GeoJSON.AJAX(["../assets/geojson/63.71KotaBanjarmasin.geojson"],{onEachFeature:popUp}).addTo(map);
+
+	var coordinates = [
+			[-3.317518, 114.592860],
+			[-3.324529, 114.587255],
+			[-3.329640, 114.584372],
+			[-3.329028, 114.587768],
+			[-3.324722, 114.598311]
+		];
+
+		for (var i = 0; i < coordinates.length; i++) {
+			L.marker(coordinates[i]).addTo(map);
+		}
+
+	</script>
+</html>
 </div>
 </div>

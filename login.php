@@ -1,25 +1,25 @@
 <?php
 // Sertakan file koneksi ke database
 require_once 'connection.php';
- 
+
 // Jalankan session
 session_start();
- 
+
 // Cek apakah pengguna sudah login dan arahkan ke halaman admin jika iya
 if (isset($_SESSION['username'])) {
     header('Location:admin/index.php');
     exit;
 }
- 
+
 // Set variabel pesan kesalahan
 $error = '';
- 
+
 // Cek apakah form login telah disubmit
 if (isset($_POST['login'])) {
     // Ambil data input dari form dan bersihkan datanya
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
- 
+
     // Validasi input
     if (empty($username)) {
         $error = 'Username tidak boleh kosong';
@@ -27,16 +27,16 @@ if (isset($_POST['login'])) {
         $error = 'Password tidak boleh kosong';
     } else {
         // Query untuk mendapatkan data user berdasarkan username
-        $stmt = $con->prepare('SELECT * FROM user WHERE username = ?');
+        $stmt = $con->prepare('SELECT * FROM user WHERE Nama_Pengguna = ?');
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
- 
-        // Verifikasi password yang dimasukkan dengan hash password yang tersimpan di database
-        if ($row && password_verify($password, $row['password'])) {
+
+        // Verifikasi password yang dimasukkan dengan password yang tersimpan di database
+        if ($row && $password === $row['Kata_Sandi']) {
             // Tetapkan variabel $_SESSION dengan username user yang berhasil login
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['username'] = $row['Nama_Pengguna'];
             // Alihkan ke halaman admin
             header('Location:admin/index.php');
             exit;
@@ -46,8 +46,8 @@ if (isset($_POST['login'])) {
         }
     }
 }
- 
 ?>
+
  
 <!doctype html>
 <html lang="en">
@@ -79,7 +79,7 @@ if (isset($_POST['login'])) {
  
                 <div class="card">
                     <div class="card-header bg-transparent mb-0">
-                        <h5 class="text-center">Login <span class="font-weight-bold text-success">User</span></h5>
+                        <h5 class="text-center text-success">Login</h5>
                     </div>
                     <div class="card-body">
                         <form action="" method="post">

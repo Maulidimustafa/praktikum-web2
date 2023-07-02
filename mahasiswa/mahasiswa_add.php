@@ -15,40 +15,32 @@ header("Location:?page=mahasiswa-show");
 <div class="col-md-12">
 <div class="card">
 <div class="card-header">
-    <strong>Tambah Data Mahasiswa</strong>
+    <strong>Tambah Data Damkar</strong>
 </div>
 <div class="card-body">
     <form method="POST" action="?page=mahasiswa-add" class="form-horizontal">
 <div class="form-group">
-    <label for="nim" class="control-label">NIM</label>
-    <input type="text" class="form-control" name="nim" placeholder="Masukan NIM..." required>
+    <label for="nim" class="control-label">ID_Pemadam</label>
+    <input type="text" class="form-control" name="nim" placeholder="Masukan ID Pemadam..." required>
 </div>
 <div class="form-group">
-    <label for="nama" class="ontrol-label">Nama Lengkap</label>
-    <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Lengkap..." required>
+    <label for="nama" class="ontrol-label">Nama_Pemadam</label>
+    <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Pemadam..." required>
 </div>
 <div class="form-group">
-    <label for="nama" class="control-label">Jenis Kelamin</label>
-        <select class="form-control" name="jenis_kelamin">
-            <option disabled selected> Pilih </option>
-            <option value="Pria">Pria</option>
-            <option value="Wanita">Wanita</option>
-        </select>
+    <label for="nama" class="ontrol-label">Alamat_Kantor</label>
+    <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat Kantor..." required>
 </div>
 <div class="form-group">
-    <label for="alamat" class="control-label">Alamat</label>
-    <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat..." required>
+    <label for="nama" class="ontrol-label">Nomor_Telepon</label>
+    <input type="text" class="form-control" name="jenis_kelamin" placeholder="Masukan Nomor Telepon..." required>
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-    <label for="email" class="control-label">Email</label>
-    <input type="email" class="form-control" name="email" placeholder="Masukan email..." required>
+<div class="form-group">
+    <label for="nama" class="ontrol-label">Wilayah_Kerja</label>
+    <input type="text" class="form-control" name="email" placeholder="Masukan Wilayah Kerja..." required>
 </div>
-<div class="form-group col-md-6">
-    <label for="telepon" class="control-label">Telepon</label>
-    <input type="number" class="form-control" name="telepon" placeholder="Masukan telepon..." required>
-</div>
-</div>
+
+
     <input type="submit" name="Submit" class="btn btn-primary" value="Simpan">
     <input type="reset" name="reset" class="btn btn-warning" value="Reset">
 </form>

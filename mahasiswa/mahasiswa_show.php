@@ -1,6 +1,6 @@
 <div class="card">
 <div class="card-header">
-    <strong>Data Mahasiswa</strong>
+    <strong>Data Damkar</strong>
 </div>
 <div class="card-body">
     <form action="?page=mahasiswa-show" method="POST">
@@ -20,22 +20,20 @@
     $limit = 5;
     $page = isset($_GET["halaman"]) ? (int) $_GET["halaman"] : 1;
     $mulai = ($page > 1) ? ($page * $limit) - $limit : 0;
-    $query = mysqli_query($con, "SELECT * FROM mahasiswa LIMIT $mulai, $limit") or die(mysqli_error($con));
+    $query = mysqli_query($con, "SELECT * FROM pemadam_kebakaran LIMIT $mulai, $limit") or die(mysqli_error($con));
 ?>
 <thead>
     <tr>
-        <th>No</th>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Alamat</th>
-        <th>Jenis Kelamin</th>
-        <th>Email</th>
-        <th>Telepon</th>
+        <th>ID Pemadam</th>
+        <th>Nama Pemadam</th>
+        <th>Alamat Kantor</th>
+        <th>Nomor Telepon</th>
+        <th>Wilayah Kerja</th>
         <th>Aksi</th>
     </tr>
 </thead>
-<tbody>
-<?php
+         <tbody>
+     <?php
 if (isset($_POST['search'])) {
     $keyword = trim($_POST['keyword']);
 if (!empty($keyword)) {
@@ -48,12 +46,11 @@ if (!empty($keyword)) {
 ?>
 <tr>
     <td><?php echo $no ?></td>
-    <td><?php echo $data['nim']; ?></td>
-    <td><?php echo $data['nama']; ?></td>
-    <td><?php echo $data['alamat']; ?></td>
-    <td><?php echo $data['jenis_kelamin']; ?></td>
-    <td><?php echo $data['email']; ?></td>
-    <td><?php echo $data['telepon']; ?></td>
+    <td><?php echo $data['ID_Pemadam']; ?></td>
+    <td><?php echo $data['Nama_Pemadam']; ?></td>
+    <td><?php echo $data['Alamat_Kantor']; ?></td>
+    <td><?php echo $data['Nomor_Telepon']; ?></td>
+    <td><?php echo $data['Wilayah_Kerja']; ?></td>
     <td>
     <a class="btn btn-sm btn-success" href="?page=mahasiswa-edit&id=<?php echo $data['id']; ?>">Edit</a>
     <a class="btn btn-sm btn-danger" href="../mahasiswa/mahasiswa_delete.php?id=<?php echo $data['id']; ?>"
